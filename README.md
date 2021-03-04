@@ -6,32 +6,12 @@ Based on the study [Unauthorized Google Maps API Key Usage Cases, and Why You Ne
 
 ## Checks performed
 
-+ `CustomSearchAPI`
-+ `StaticMapAPI`
-+ `StreetViewAPI`
-+ `EmbedBasicAPI`
-+ `EmbedAdvancedAPI`
-+ `DirectionsAPI`
-+ `GeocodeAPI`
-+ `DistanceMatrixAPI`
-+ `FindPlaceFromTextAPI`
-+ `AutocompleteAPI`
-+ `ElevationAPI`
-+ `TimezoneAPI`
-+ `NearestRoadsAPI`
-+ `GeolocationAPI`
-+ `RouteToTraveledAPI`
-+ `SpeedLimitRoadsAPI`
-+ `PlaceDetailsAPI`
-+ `NearbySearchPlacesAPI`
-+ `TextSearchPlacesAPI`
-+ `PlacesPhotoAPI`
-+ `PlayableLocationsAPI`
-+ `FCMAPI`
+![](img/img.png)
 
 ## USAGE
 
 ```py
+# Check API key AIza[CONFIDENTIAL] and print PoC
 $> gap -api "AIza[CONFIDENTIAL]" -poc
 
 [i] Performing checks using AIza[CONFIDENTIAL]
