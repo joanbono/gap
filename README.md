@@ -11,10 +11,10 @@ Based on the study [Unauthorized Google Maps API Key Usage Cases, and Why You Ne
 ## USAGE
 
 ```py
-# Check API key AIza[CONFIDENTIAL] and print PoC
-$> gap -api "AIza[CONFIDENTIAL]" -poc
+# Check API key AIza[REDACTED] and print PoC
+$> gap -api "AIza[REDACTED]" -poc
 
-[i] Performing checks using AIza[CONFIDENTIAL]
+[i] Performing checks using AIza[REDACTED]
 [+] Not vulnerable to DirectionsAPI
 [+] Not vulnerable to StaticMapAPI
 [+] Not vulnerable to StreetViewAPI
@@ -22,23 +22,23 @@ $> gap -api "AIza[CONFIDENTIAL]" -poc
 [+] Not vulnerable to EmbedAdvancedAPI
 [+] Not vulnerable to DirectionsAPI
 [-] Vulnerable to GeocodeAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/geocode/json?latlng=40,30&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/geocode/json?latlng=40,30&key=AIza[REDACTED]
 
 [-] Vulnerable to DistanceMatrixAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.6655101,-73.89188969999998&destinations=40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.6655101,-73.89188969999998&destinations=40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626&key=AIza[REDACTED]
 
 [-] Vulnerable to FindPlaceFromTextAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIza[REDACTED]
 
 [-] Vulnerable to AutocompleteAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Bingh&types=%28cities%29&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Bingh&types=%28cities%29&key=AIza[REDACTED]
 
 [+] Not vulnerable to ElevationAPI
 [+] Not vulnerable to TimezoneAPI
 [+] Not vulnerable to NearestRoadsAPI
 [-] Vulnerable to GeolocationAPI
 [!] PoC Request:
-POST /geolocation/v1/geolocate?key=AIza[CONFIDENTIAL] HTTP/1.1
+POST /geolocation/v1/geolocate?key=AIza[REDACTED] HTTP/1.1
 Host: www.googleapis.com
 Content-Type: application/json
 
@@ -47,13 +47,13 @@ Content-Type: application/json
 [+] Not vulnerable to RouteToTraveledAPI
 [+] Not vulnerable to SpeedLimitRoadsAPI
 [-] Vulnerable to PlaceDetailsAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIza[REDACTED]
 
 [-] Vulnerable to NearbySearchPlacesAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=100&types=food&name=harbour&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=100&types=food&name=harbour&key=AIza[REDACTED]
 
 [-] Vulnerable to TextSearchPlacesAPI
-[!] PoC URL: https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=AIza[CONFIDENTIAL]
+[!] PoC URL: https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=AIza[REDACTED]
 
 [+] Not vulnerable to PlacesPhotoAPI
 [+] Not vulnerable to PlayableLocationsAPI
