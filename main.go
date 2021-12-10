@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/gocaio/gap/utils/checks"
+	"github.com/joanbono/gap/utils/checks"
 )
 
 var (

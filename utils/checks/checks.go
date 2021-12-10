@@ -17,30 +17,29 @@ var cyan = color.New(color.FgCyan)
 
 func ApiChecks(api string, poc bool) {
 	fmt.Printf("%v Performing checks using %v\n", cyan.Sprintf("[i]"), yellow.Sprintf(api))
-	/*
-		CustomSearchAPI(api, poc)
-		StaticMapAPI(api, poc)
-		StreetViewAPI(api, poc)
-		EmbedBasicAPI(api, poc)
-		EmbedAdvancedAPI(api, poc)
-		DirectionsAPI(api, poc)
-		GeocodeAPI(api, poc)
-		DistanceMatrixAPI(api, poc)
-		FindPlaceFromTextAPI(api, poc)
-		AutocompleteAPI(api, poc)
-		ElevationAPI(api, poc)
-		TimezoneAPI(api, poc)
-		NearestRoadsAPI(api, poc)
-		GeolocationAPI(api, poc)
-		RouteToTraveledAPI(api, poc)
-		SpeedLimitRoadsAPI(api, poc)
-		PlaceDetailsAPI(api, poc)
-		NearbySearchPlacesAPI(api, poc)
-		TextSearchPlacesAPI(api, poc)
-		PlacesPhotoAPI(api, poc)
-		PlayableLocationsAPI(api, poc)
-		FCMAPI(api, poc)
-	*/
+
+	CustomSearchAPI(api, poc)
+	StaticMapAPI(api, poc)
+	StreetViewAPI(api, poc)
+	EmbedBasicAPI(api, poc)
+	EmbedAdvancedAPI(api, poc)
+	DirectionsAPI(api, poc)
+	GeocodeAPI(api, poc)
+	DistanceMatrixAPI(api, poc)
+	FindPlaceFromTextAPI(api, poc)
+	AutocompleteAPI(api, poc)
+	ElevationAPI(api, poc)
+	TimezoneAPI(api, poc)
+	NearestRoadsAPI(api, poc)
+	GeolocationAPI(api, poc)
+	RouteToTraveledAPI(api, poc)
+	SpeedLimitRoadsAPI(api, poc)
+	PlaceDetailsAPI(api, poc)
+	NearbySearchPlacesAPI(api, poc)
+	TextSearchPlacesAPI(api, poc)
+	PlacesPhotoAPI(api, poc)
+	PlayableLocationsAPI(api, poc)
+	FCMAPI(api, poc)
 	QueryAutocompletePlaces(api, poc)
 
 }
@@ -453,16 +452,16 @@ func FCMAPI(api string, poc bool) {
 func QueryAutocompletePlaces(api string, poc bool) {
 	var url = `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?input=pizza+near%20par&key=` + api
 	response := MakeRequest(url)
-	var data CustomSearchAPIStruct
+	var data QueryAutocompletePlacesStruct
 	bodyBytes, err := ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
 	err = json.Unmarshal(bodyBytes, &data)
 	CheckErr(err)
 
-	if data.Error.Status == "PERMISSION_DENIED" {
-		fmt.Printf("%v\n", green.Sprintf("[+] Not vulnerable to DirectionsAPI"))
+	if data.Error == "PERMISSION_DENIED" {
+		fmt.Printf("%v\n", green.Sprintf("[+] Not vulnerable to QueryAutocompletePlaces"))
 	} else {
-		fmt.Printf("%v\n", red.Sprintf("[-] Vulnerable to DirectionsAPI"))
+		fmt.Printf("%v\n", red.Sprintf("[-] Vulnerable to QueryAutocompletePlaces"))
 		if poc {
 			fmt.Printf("%v %s\n\n", yellow.Sprintf("[!] PoC URL:"), url)
 		}
