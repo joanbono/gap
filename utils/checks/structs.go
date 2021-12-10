@@ -119,3 +119,9 @@ type PlayableLocationsAPIStruct struct {
 		Details []interface{} `json:"details"`
 	} `json:"error"`
 }
+
+type QueryAutocompletePlacesStruct struct {
+	Error       string        `json:"error_message"`
+	Predictions []interface{} `json:"predictions"`
+	Status      string        `json:"status"`
+}

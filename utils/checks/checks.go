@@ -414,7 +414,7 @@ func PlayableLocationsAPI(api string, poc bool) {
 	var url = `https://playablelocations.googleapis.com/v3:samplePlayableLocations?key=`
 	var postData = []byte(`{"area_filter":{"s2_cell_id":7715420662885515264},"criteria":[{"gameObjectType":1,"filter":{"maxLocationCount":4,"includedTypes":["food_and_drink"]},"fields_to_return": {"paths": ["name"]}},{"gameObjectType":2,"filter":{"maxLocationCount":4},"fields_to_return": {"paths": ["types", "snapped_point"]}}]}`)
 	request, response := MakePostRequest(url, postData, api)
-	var data GeolocationAPIStruct
+	var data PlayableLocationsAPIStruct
 	bodyBytes, err := ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
 	err = json.Unmarshal(bodyBytes, &data)
@@ -453,14 +453,18 @@ func FCMAPI(api string, poc bool) {
 func QueryAutocompletePlaces(api string, poc bool) {
 	var url = `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?input=pizza+near%20par&key=` + api
 	response := MakeRequest(url)
+	var data CustomSearchAPIStruct
+	bodyBytes, err := ioutil.ReadAll(response.Body)
 	defer response.Body.Close()
+	err = json.Unmarshal(bodyBytes, &data)
+	CheckErr(err)
 
-	if response.StatusCode == 302 {
-		fmt.Printf("%v\n", red.Sprintf("[-] Vulnerable to QueryAutocompletePlacess"))
+	if data.Error.Status == "PERMISSION_DENIED" {
+		fmt.Printf("%v\n", green.Sprintf("[+] Not vulnerable to DirectionsAPI"))
+	} else {
+		fmt.Printf("%v\n", red.Sprintf("[-] Vulnerable to DirectionsAPI"))
 		if poc {
 			fmt.Printf("%v %s\n\n", yellow.Sprintf("[!] PoC URL:"), url)
 		}
-	} else {
-		fmt.Printf("%v\n", green.Sprintf("[+] Not vulnerable to PlacesPhotoAPI"))
 	}
 }
