@@ -458,7 +458,7 @@ func QueryAutocompletePlaces(api string, poc bool) {
 	err = json.Unmarshal(bodyBytes, &data)
 	CheckErr(err)
 
-	if data.Error == "PERMISSION_DENIED" {
+	if data.Status == "REQUEST_DENIED" {
 		fmt.Printf("%v\n", green.Sprintf("[+] Not vulnerable to QueryAutocompletePlaces"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("[-] Vulnerable to QueryAutocompletePlaces"))
