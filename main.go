@@ -3,8 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-
-	"github.com/joanbono/gap/utils/checks"
 )
 
 var (
@@ -30,6 +28,6 @@ func main() {
 		flag.PrintDefaults()
 		return
 	} else {
-		checks.ApiChecks(apiFlag, pocFlag)
+		ApiChecks(apiFlag, pocFlag)
 	}
 }
