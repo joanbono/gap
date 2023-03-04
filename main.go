@@ -7,6 +7,7 @@ import (
 
 var (
 	apiFlag     string
+	proxyFlag   string
 	pocFlag     bool
 	versionFlag bool
 	version     string
@@ -14,6 +15,7 @@ var (
 
 func init() {
 	flag.StringVar(&apiFlag, "api", "", "Google Maps API key")
+	flag.StringVar(&proxyFlag, "x", "", "Proxy URL. Ex: http://127.0.0.1:8080")
 	flag.BoolVar(&pocFlag, "poc", false, "Generate PoC for vulnerable ones")
 	flag.BoolVar(&versionFlag, "version", false, "Show version")
 	flag.Parse()
@@ -21,14 +23,17 @@ func init() {
 
 func main() {
 	if versionFlag {
-		fmt.Printf("\nGAP %v\n\n", version)
+		fmt.Printf("\n     🗺  GAP %v\n\n", version)
 		return
+	}
+	if proxyFlag != "" {
+		validateProxyUrl(proxyFlag)
 	}
 	if apiFlag == "" {
 		flag.PrintDefaults()
 		return
 	} else {
 		validateGoogleMapsApiKey(apiFlag)
-		ApiChecks(apiFlag, pocFlag)
+		ApiChecks(apiFlag, proxyFlag, pocFlag)
 	}
 }
