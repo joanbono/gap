@@ -28,6 +28,7 @@ func main() {
 		flag.PrintDefaults()
 		return
 	} else {
+		validateGoogleMapsApiKey(apiFlag)
 		ApiChecks(apiFlag, pocFlag)
 	}
 }

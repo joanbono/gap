@@ -3,6 +3,8 @@ package main
 import (
 	"crypto/tls"
 	"fmt"
+	"os"
+	"regexp"
 
 	"github.com/fatih/color"
 	"github.com/monaco-io/request"
@@ -14,6 +16,14 @@ var yellow = color.New(color.FgYellow)
 var red = color.New(color.FgRed)
 var green = color.New(color.FgGreen)
 var cyan = color.New(color.FgCyan)
+
+func validateGoogleMapsApiKey(apiKey string) {
+	match, _ := regexp.MatchString(`AIza[0-9A-Za-z\-_]{35}`, apiKey)
+	if !match || len(apiKey) != 39 {
+		fmt.Printf("🔑 %s is not a valid Google Maps API key.\n", yellow.Sprintf(apiKey))
+		os.Exit(0)
+	}
+}
 
 func ApiChecks(api string, poc bool) {
 	fmt.Printf("ℹ️  Performing checks for %v\n", yellow.Sprintf(api))
@@ -57,10 +67,10 @@ func CustomSearchAPI(api string, poc bool) {
 
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
-	if resp.Code() == 403 && value.String() == "PERMISSION_DENIED" {
-		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to DirectionsAPI"))
+	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
+		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to CustomSearchAPI"))
 	} else {
-		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to DirectionsAPI"))
+		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to CustomSearchAPI"))
 		if poc {
 			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC URL:"), url)
 		}
@@ -331,7 +341,7 @@ func NearestRoadsAPI(api string, poc bool) {
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
 
-	if resp.Code() == 403 && value.String() == "PERMISSION_DENIED" {
+	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to NearestRoadsAPI"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to NearestRoadsAPI"))
@@ -361,7 +371,7 @@ func GeolocationAPI(api string, poc bool) {
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
 
-	if resp.Code() == 403 && value.String() == "PERMISSION_DENIED" {
+	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to GeolocationAPI"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to GeolocationAPI"))
@@ -386,7 +396,7 @@ func RouteToTraveledAPI(api string, poc bool) {
 
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
-	if resp.Code() == 403 && value.String() == "PERMISSION_DENIED" {
+	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to RouteToTraveledAPI"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to RouteToTraveledAPI"))
@@ -410,7 +420,7 @@ func SpeedLimitRoadsAPI(api string, poc bool) {
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
 
-	if resp.Code() == 403 && value.String() == "PERMISSION_DENIED" {
+	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to SpeedLimitRoadsAPI"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to SpeedLimitRoadsAPI"))
