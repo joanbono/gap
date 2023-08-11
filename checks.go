@@ -518,7 +518,6 @@ func NearbySearchPlacesAPI(api, proxy string, poc bool) {
 
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
-
 	print(resp.Code(), "\n", value.String(), "\n")
 	if resp.Code() == 200 && (value.String() == "OK" || value.String() == "ZERO_RESULTS") {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to NearbySearchPlacesAPI"))
