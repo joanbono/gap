@@ -77,10 +77,9 @@ func CustomSearchAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -103,10 +102,9 @@ func StaticMapAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	if resp.Code() == 200 {
@@ -127,10 +125,9 @@ func StreetViewAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 
@@ -153,10 +150,9 @@ func EmbedBasicAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	if resp.Code() == 200 {
@@ -178,10 +174,9 @@ func EmbedAdvancedAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 
@@ -204,10 +199,9 @@ func DirectionsAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -230,10 +224,9 @@ func GeocodeAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -256,10 +249,9 @@ func DistanceMatrixAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -282,10 +274,9 @@ func FindPlaceFromTextAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -308,10 +299,9 @@ func AutocompleteAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -334,10 +324,9 @@ func ElevationAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -360,10 +349,9 @@ func TimezoneAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
@@ -386,10 +374,9 @@ func NearestRoadsAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -418,11 +405,10 @@ func GeolocationAPI(api, proxy string, poc bool) {
 			"Authorization": "key=" + api,
 			"Content-Type":  "application/json",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
-		JSON:       body,
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
+		JSON:      body,
 	}
 
 	resp := c.Send()
@@ -448,10 +434,9 @@ func RouteToTraveledAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -474,10 +459,9 @@ func SpeedLimitRoadsAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -501,10 +485,9 @@ func PlaceDetailsAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -528,10 +511,9 @@ func NearbySearchPlacesAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -555,10 +537,9 @@ func TextSearchPlacesAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -582,10 +563,9 @@ func PlacesPhotoAPI(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
@@ -610,11 +590,10 @@ func PlayableLocationsAPI(api, proxy string, poc bool) {
 			"Authorization": "key=" + api,
 			"Content-Type":  "application/json",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
-		JSON:       []byte(`{"area_filter":{"s2_cell_id":7715420662885515264},"criteria":[{"gameObjectType":1,"filter":{"maxLocationCount":4,"includedTypes":["food_and_drink"]},"fields_to_return": {"paths": ["name"]}},{"gameObjectType":2,"filter":{"maxLocationCount":4},"fields_to_return": {"paths": ["types", "snapped_point"]}}]}`),
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
+		JSON:      []byte(`{"area_filter":{"s2_cell_id":7715420662885515264},"criteria":[{"gameObjectType":1,"filter":{"maxLocationCount":4,"includedTypes":["food_and_drink"]},"fields_to_return": {"paths": ["name"]}},{"gameObjectType":2,"filter":{"maxLocationCount":4},"fields_to_return": {"paths": ["types", "snapped_point"]}}]}`),
 	}
 
 	resp := c.Send()
@@ -640,11 +619,10 @@ func FCMAPI(api, proxy string, poc bool) {
 			"Authorization": "key=" + api,
 			"Content-Type":  "application/json",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
-		JSON:       []byte(`{"registration_ids":["ABC"]}`),
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
+		JSON:      []byte(`{"registration_ids":["ABC"]}`),
 	}
 
 	resp := c.Send()
@@ -668,10 +646,9 @@ func QueryAutocompletePlaces(api, proxy string, poc bool) {
 		Header: (map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
-		ProxyURL:   proxy,
-		Timeout:    time.Second * 20,
-		TLSTimeout: time.Second * 20,
-		TLSConfig:  &tls.Config{InsecureSkipVerify: true},
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 
 	resp := c.Send()
