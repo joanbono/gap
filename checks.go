@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/fatih/color"
@@ -412,9 +413,9 @@ func GeolocationAPI(api, proxy string, poc bool) {
 	}
 
 	resp := c.Send()
-	value := gjson.Get(resp.String(), "error.status")
+	value := gjson.Get(resp.String(), "error.message")
 
-	if (resp.Code() == 403 && value.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
+	if (resp.Code() == 403 && strings.Contains(value.String(), "PERMISSION_DENIED")) || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to GeolocationAPI"))
 	} else {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to GeolocationAPI"))
@@ -518,7 +519,6 @@ func NearbySearchPlacesAPI(api, proxy string, poc bool) {
 
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "status")
-	print(resp.Code(), "\n", value.String(), "\n")
 	if resp.Code() == 200 && (value.String() == "OK" || value.String() == "ZERO_RESULTS") {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to NearbySearchPlacesAPI"))
 		if poc {
