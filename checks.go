@@ -613,7 +613,7 @@ func PlayableLocationsAPI(api, proxy string, poc, quiet bool) {
 	resp := c.Send()
 	value := gjson.Get(resp.String(), "error.status")
 
-	if (resp.Code() != 403 && value.String() == "PERMISSION_DENIED") || resp.Code() != 404 {
+	if (resp.Code() != 403 && value.String() == "PERMISSION_DENIED") || resp.Code() == 404 {
 		if !quiet {
 			fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to PlayableLocationsAPI"))
 		}
