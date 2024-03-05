@@ -46,8 +46,6 @@ func ApiChecks(api, proxy string, poc, quiet bool) {
 	CustomSearchAPI(api, proxy, poc, quiet)
 	StaticMapAPI(api, proxy, poc, quiet)
 	StreetViewAPI(api, proxy, poc, quiet)
-	EmbedBasicAPI(api, proxy, poc, quiet)
-	EmbedAdvancedAPI(api, proxy, poc, quiet)
 	DirectionsAPI(api, proxy, poc, quiet)
 	GeocodeAPI(api, proxy, poc, quiet)
 	DistanceMatrixAPI(api, proxy, poc, quiet)
@@ -63,7 +61,6 @@ func ApiChecks(api, proxy string, poc, quiet bool) {
 	NearbySearchPlacesAPI(api, proxy, poc, quiet)
 	TextSearchPlacesAPI(api, proxy, poc, quiet)
 	PlacesPhotoAPI(api, proxy, poc, quiet)
-	PlayableLocationsAPI(api, proxy, poc, quiet)
 	FCMAPI(api, proxy, poc, quiet)
 	QueryAutocompletePlaces(api, proxy, poc, quiet)
 
@@ -143,56 +140,6 @@ func StreetViewAPI(api, proxy string, poc, quiet bool) {
 	} else if !quiet {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to StreetViewAPI"))
 	}
-}
-
-func EmbedBasicAPI(api, proxy string, poc, quiet bool) {
-	var url = `https://www.google.com/maps/embed/v1/place?q=Seattle&key=` + api
-	var iframe = fmt.Sprintf(`<iframe width="600" height="450" frameborder="0" style="border:0" src="%s" allowfullscreen></iframe>`, url)
-	c := request.Client{
-		URL:    url,
-		Method: "GET",
-		Header: (map[string]string{
-			"User-Agent": "GAP - The Google Maps API Checker",
-		}),
-		ProxyURL:  proxy,
-		Timeout:   time.Second * 20,
-		TLSConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-	resp := c.Send()
-	if resp.Code() == 200 {
-		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to EmbedBasicAPI"))
-		if poc {
-			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC iframe:"), iframe)
-		}
-	} else if !quiet {
-		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to EmbedBasicAPI"))
-	}
-}
-
-func EmbedAdvancedAPI(api, proxy string, poc, quiet bool) {
-	var url = `https://www.google.com/maps/embed/v1/search?q=record+stores+in+Seattle&key=` + api
-	var iframe = fmt.Sprintf(`<iframe width="600" height="450" frameborder="0" style="border:0" src="%s" allowfullscreen></iframe>`, url)
-	c := request.Client{
-		URL:    url,
-		Method: "GET",
-		Header: (map[string]string{
-			"User-Agent": "GAP - The Google Maps API Checker",
-		}),
-		ProxyURL:  proxy,
-		Timeout:   time.Second * 20,
-		TLSConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-	resp := c.Send()
-
-	if resp.Code() == 200 {
-		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to EmbedAdvancedAPI"))
-		if poc {
-			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC iframe:"), iframe)
-		}
-	} else if !quiet {
-		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to EmbedAdvancedAPI"))
-	}
-
 }
 
 func DirectionsAPI(api, proxy string, poc, quiet bool) {
@@ -591,37 +538,6 @@ func PlacesPhotoAPI(api, proxy string, poc, quiet bool) {
 		}
 	} else if !quiet {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to PlacesPhotoAPI"))
-	}
-}
-
-func PlayableLocationsAPI(api, proxy string, poc, quiet bool) {
-	var url = `https://playablelocations.googleapis.com/v3:samplePlayableLocations?key=` + api
-	c := request.Client{
-		URL:    url,
-		Method: "POST",
-		Header: (map[string]string{
-			"User-Agent":    "GAP - The Google Maps API Checker",
-			"Authorization": "key=" + api,
-			"Content-Type":  "application/json",
-		}),
-		ProxyURL:  proxy,
-		Timeout:   time.Second * 20,
-		TLSConfig: &tls.Config{InsecureSkipVerify: true},
-		JSON:      []byte(`{"area_filter":{"s2_cell_id":7715420662885515264},"criteria":[{"gameObjectType":1,"filter":{"maxLocationCount":4,"includedTypes":["food_and_drink"]},"fields_to_return": {"paths": ["name"]}},{"gameObjectType":2,"filter":{"maxLocationCount":4},"fields_to_return": {"paths": ["types", "snapped_point"]}}]}`),
-	}
-
-	resp := c.Send()
-	value := gjson.Get(resp.String(), "error.status")
-
-	if (resp.Code() != 403 && value.String() == "PERMISSION_DENIED") || resp.Code() == 404 {
-		if !quiet {
-			fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to PlayableLocationsAPI"))
-		}
-	} else {
-		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to PlayableLocationsAPI"))
-		if poc {
-			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC URL:"), url)
-		}
 	}
 }
 
