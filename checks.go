@@ -567,7 +567,7 @@ func FCMAPI(api, proxy string, poc, quiet bool) {
 		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to FCMAPI"))
 		if poc {
 			command := fmt.Sprintf("curl -k -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: key=%s\" -A \"GAP - The Google Maps API Checker\" -d '{\"registration_ids\":[\"ABC\"]}' \"%s\"", api, url)
-			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC Command: %s"), command)
+			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC Command:"), command)
 		}
 	}
 }
