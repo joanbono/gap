@@ -371,7 +371,7 @@ func GeolocationAPI(api, proxy string, poc, quiet bool) {
 
 	value := gjson.Get(resp.String(), "error.message")
 	msg := gjson.Get(resp.String(), "error.status")
-	if (resp.Code() == 403 && strings.Contains(value.String(), "PERMISSION_DENIED")) || (resp.Code() == 403 && msg.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") || (resp.Code() == 403 && strings.Contains(value.String(), "Geolocation API has not been used in project")) {
+	if (resp.Code() == 403 && strings.Contains(value.String(), "PERMISSION_DENIED")) || (resp.Code() == 403 && msg.String() == "PERMISSION_DENIED") || (resp.Code() == 400 && msg.String() == "INVALID_ARGUMENT") || (resp.Code() == 400 && value.String() == "INVALID_ARGUMENT") || (resp.Code() == 403 && strings.Contains(value.String(), "Geolocation API has not been used in project")) {
 		if !quiet {
 			fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to GeolocationAPI"))
 		}
