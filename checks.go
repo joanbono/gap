@@ -63,6 +63,7 @@ func ApiChecks(api, proxy string, poc, quiet bool) {
 	PlacesPhotoAPI(api, proxy, poc, quiet)
 	FCMAPI(api, proxy, poc, quiet)
 	QueryAutocompletePlaces(api, proxy, poc, quiet)
+	GenerativeLanguage(api, proxy, poc, quiet)
 
 }
 
@@ -595,5 +596,32 @@ func QueryAutocompletePlaces(api, proxy string, poc, quiet bool) {
 		}
 	} else if !quiet {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to QueryAutocompletePlaces"))
+	}
+}
+
+// curl "https://generativelanguage.googleapis.com/v1beta/files?key=$API_KEY"
+
+func GenerativeLanguage(api, proxy string, poc, quiet bool) {
+	var url = `https://generativelanguage.googleapis.com/v1beta/files?key=` + api
+	c := request.Client{
+		URL:    url,
+		Method: "GET",
+		Header: (map[string]string{
+			"User-Agent": "GAP - The Google Maps API Checker",
+		}),
+		ProxyURL:  proxy,
+		Timeout:   time.Second * 20,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+
+	resp := c.Send()
+
+	if resp.Code() == 200 {
+		fmt.Printf("%v\n", red.Sprintf("❌ Vulnerable to GenerativeLanguage"))
+		if poc {
+			fmt.Printf("%v %s\n\n", yellow.Sprintf("⚠️  PoC URL:"), url)
+		}
+	} else if !quiet {
+		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to GenerativeLanguage"))
 	}
 }
