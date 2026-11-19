@@ -10,6 +10,37 @@ Based on the study [Unauthorized Google Maps API Key Usage Cases, and Why You Ne
 
 ## USAGE
 
+```
+  -X value
+    	Custom header, repeatable. Ex: -X "Header1: Value" -X "Header2: Value"
+  -api string
+    	Google Maps API key
+  -poc
+    	Generate PoC for vulnerable ones
+  -quiet
+    	Print only vulnerable APIs
+  -version
+    	Show version
+  -x string
+    	Proxy URL. Ex: http://127.0.0.1:8080
+```
+
+### Custom headers
+
+Use `-X` to add custom headers to every request. Repeat it to add more than one. Custom headers override the defaults (e.g. `User-Agent`).
+
+```sh
+$ gap -api AIza[REDACTED] -X "Referer: https://example.com" -X "X-Custom: Value"
+```
+
+Combine it with `-x` to review the requests in a proxy:
+
+```sh
+$ gap -api AIza[REDACTED] -x http://127.0.0.1:8080 -X "Referer: https://example.com"
+```
+
+### Example
+
 ```py
 # Check API key AIza[REDACTED] and print PoC
 $ go run *.go -api AIza[REDACTED] -poc

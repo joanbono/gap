@@ -73,7 +73,7 @@ func CustomSearchAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -100,7 +100,7 @@ func StaticMapAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -124,7 +124,7 @@ func StreetViewAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -148,7 +148,7 @@ func DirectionsAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -173,7 +173,7 @@ func GeocodeAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -198,7 +198,7 @@ func DistanceMatrixAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -223,7 +223,7 @@ func FindPlaceFromTextAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -248,7 +248,7 @@ func AutocompleteAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -274,7 +274,7 @@ func ElevationAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -300,7 +300,7 @@ func TimezoneAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -325,7 +325,7 @@ func NearestRoadsAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -356,7 +356,7 @@ func GeolocationAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "POST",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent":    "GAP - The Google Maps API Checker",
 			"Authorization": "key=" + api,
 			"Content-Type":  "application/json",
@@ -390,7 +390,7 @@ func RouteToTraveledAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -417,7 +417,7 @@ func SpeedLimitRoadsAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -445,7 +445,7 @@ func PlaceDetailsAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -471,7 +471,7 @@ func NearbySearchPlacesAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -496,7 +496,7 @@ func TextSearchPlacesAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -522,7 +522,7 @@ func PlacesPhotoAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -547,7 +547,7 @@ func FCMAPI(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "POST",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent":    "GAP - The Google Maps API Checker",
 			"Authorization": "key=" + api,
 			"Content-Type":  "application/json",
@@ -578,7 +578,7 @@ func QueryAutocompletePlaces(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -606,7 +606,7 @@ func GenerativeLanguage(api, proxy string, poc, quiet bool) {
 	c := request.Client{
 		URL:    url,
 		Method: "GET",
-		Header: (map[string]string{
+		Header: withHeaders(map[string]string{
 			"User-Agent": "GAP - The Google Maps API Checker",
 		}),
 		ProxyURL:  proxy,
@@ -624,4 +624,30 @@ func GenerativeLanguage(api, proxy string, poc, quiet bool) {
 	} else if !quiet {
 		fmt.Printf("%v\n", green.Sprintf("✅ Not vulnerable to GenerativeLanguage"))
 	}
+}
+
+// customHeaders holds the headers provided with -X
+var customHeaders = map[string]string{}
+
+// parseCustomHeaders validates and stores the
+// "Name: Value" headers provided with -X
+func parseCustomHeaders(headers []string) {
+	for _, h := range headers {
+		name, value, found := strings.Cut(h, ":")
+		name = strings.TrimSpace(name)
+		if !found || name == "" {
+			fmt.Printf("📝 %s is not a valid header. Use \"Name: Value\".\n", yellow.Sprintf(h))
+			os.Exit(0)
+		}
+		customHeaders[name] = strings.TrimSpace(value)
+	}
+}
+
+// withHeaders merges the custom headers into the
+// default ones. Custom headers take precedence
+func withHeaders(base map[string]string) map[string]string {
+	for k, v := range customHeaders {
+		base[k] = v
+	}
+	return base
 }
